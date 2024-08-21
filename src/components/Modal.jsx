@@ -1,14 +1,21 @@
-import { createPortal } from 'react-dom';
+import { motion } from "framer-motion";
+import { createPortal } from "react-dom";
 
 export default function Modal({ title, children, onClose }) {
   return createPortal(
     <>
       <div className="backdrop" onClick={onClose} />
-      <dialog open className="modal">
+      <motion.dialog
+        // initial itu state awal animasi ketika component dialog ini muncul , karena tidak ada trigger props untuk memunculkan component dialog ini, jadi menggunakan props initial
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        open
+        className="modal"
+      >
         <h2>{title}</h2>
         {children}
-      </dialog>
+      </motion.dialog>
     </>,
-    document.getElementById('modal')
+    document.getElementById("modal")
   );
 }
