@@ -9,7 +9,9 @@ function Tab({ isSelected, onSelect, badgeCaption, children }) {
         onClick={onSelect}
       >
         {children}
-        <Badge caption={badgeCaption}></Badge>
+        {/* Component Badge akan di recreate ketika badgetCaption update karena kita menambahkan key */}
+        {/* Setting key dan change valuenya akan recreate component, tujuannya untuk re run animations */}
+        <Badge key={badgeCaption} caption={badgeCaption}></Badge>
       </button>
       {isSelected && (
         <motion.div layoutId="tab-indicator" className="active-tab-indicator" />
