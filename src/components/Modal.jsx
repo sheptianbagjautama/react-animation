@@ -8,7 +8,8 @@ export default function Modal({ title, children, onClose }) {
       <motion.dialog
         // initial itu state awal animasi ketika component dialog ini muncul , karena tidak ada trigger props untuk memunculkan component dialog ini, jadi menggunakan props initial
         initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
+        animate={{ opacity: 1, y: 0 }} //lakukan animasi setelah initial
+        exit={{ opacity: 0, y: 30 }} //animasi ketika ingin menghilangkan component
         open
         className="modal"
       >

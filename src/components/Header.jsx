@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useState } from "react";
 
-import NewChallenge from './NewChallenge.jsx';
+import NewChallenge from "./NewChallenge.jsx";
+// Wrapper untuk display atau remove component terutama untuk component yang ingin di remove contoh seperti ketika hide modal
+import { AnimatePresence } from "framer-motion";
 
 export default function Header() {
   const [isCreatingNewChallenge, setIsCreatingNewChallenge] = useState();
@@ -15,7 +17,9 @@ export default function Header() {
 
   return (
     <>
-      {isCreatingNewChallenge && <NewChallenge onDone={handleDone} />}
+      <AnimatePresence>
+        {isCreatingNewChallenge && <NewChallenge onDone={handleDone} />}
+      </AnimatePresence>
 
       <header id="main-header">
         <h1>Your Challenges</h1>
